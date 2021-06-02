@@ -10,7 +10,7 @@ The program can use:
 The program then exactly calculate the cumulative (multi-dimensional) distribution for the chosen spin model, and samples a dataset from it.
 
 In some sense, it is a very basic code, which involves computing the probability of all the `2^n` states of the system with `n` spin variables.
-For that reason the program can still reasonably sample datasets for systems of `n=15 to 20` spins, and for models with `K=100 to 500` interactions. 
+For that reason the program doesn't really work for too large systems. However, it can still reasonably sample datasets for systems of `n=15 to 20` spins, and for models with `K=100 to 500` interactions. 
 With too large values of `n` the precision (on the uniform sampling) will drop.
 For large systems the computing time will also quickly increase.
 

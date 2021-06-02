@@ -59,10 +59,13 @@ The program offers different ways to define a spin model (i.e., a list of intera
 
 #### Spin models specified by the user through an input file: (to come)
 
-         
-### Other functions available for use in the file `main.cpp` in `int main()`:
+### Get information on your model:
 
-For hands-on and simple tests of the program, check the two examples in the function `int main()`.
+### Generate data:
+
+## Examples:
+
+For hands-on and simple tests of the program, check the two examples in the function `int main()` of the `main.cpp` file.
 
 ### Ouput files:
 

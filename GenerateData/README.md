@@ -7,12 +7,14 @@ The program can use:
  - randomly generated spin models (see section below);
  - or, chosen spin models specified by the user through an input file (section to be added).
 
-The program then exactly calculate the cumulative distribution for the chosen spin model, and samples a dataset from it.
+The program then exactly calculate the cumulative (multi-dimensional) distribution for the chosen spin model, and samples a dataset from it.
 
 In some sense, it is a very basic code, which involves computing the probability of all the `2^n` states of the system with `n` spin variables.
 For that reason the program can still reasonably sample datasets for systems of `n=15 to 20` spins, and for models with `K=100 to 500` interactions. 
 With too large values of `n` the precision (on the uniform sampling) will drop.
-For larg systems the computing time will also quickly increase.
+For large systems the computing time will also quickly increase.
+
+For large systems (large values of `n`) it is recommended to use methods such as Metropolis-Hastings algorithm. 
 
 ## Requirements
 

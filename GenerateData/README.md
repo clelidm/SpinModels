@@ -15,7 +15,7 @@ For that reason the program doesn't really work for too large systems. However, 
 With too large values of `n` the precision (on the uniform sampling) will drop.
 For large systems the computing time will also quickly increase.
 
-For large number `n` of variables, it is recommended to use methods such as Metropolis-Hastings algorithm. 
+For large number `n` of variables, it is recommended to use methods such as a Metropolis-Hastings algorithm. 
 
 ## Requirements
 
@@ -37,13 +37,25 @@ The code uses the C++11 version of C++.
  - `int K` = number of interactions of the model;
  - `unsigned int N` = number of datapoints of the generated dataset.
 
-### Available functions from the `main.cpp`:
+### Available functions from the file `main.cpp`:
 
 For hands-on and simple tests of the program, check the two examples in the function `int main()`.
 
-#### Functions available to define a spin models:
+#### Define a spin models:
 
-The program offers different ways to define the chosen spin models. 
+A spin model is stored in a list of `Interaction`:  `list<Interaction>`.
+For more information, the structure `Interaction` is defined in `data.h`. 
+Each `Interaction I` contains the information about:
+ - the operator associated to that interaction: stored as an integer in `I.Op`;
+ - the value of the real parameter `I.g` associated to the interaction: stored in `double I.g`;
+ - the value of the model average of the operator `I.Op`: stored in `I.av_M`;  --> this value is initially set to `0`, and can be computed after definition of the model 
+ - the value of the empirical average of the operator `I.Op`: stored in `I.av_D` --> this value is initially set to `0`, and can be computed when a dataset is generated.
+
+The program offers different ways to define a spin model (i.e., a list of interactions `list<Interaction>`):
+ - the function `list<Interaction> IndepModel(double h=1)` creates an independent model with one field on each spin variable; the value of each field parameters is uniformly sampled over `[-h; +h]`.
+ - the function `list<Interaction> FullyConnectedPairwiseModel(double h=1, double J=1)` creates a fully connected pairwise model, i.e., with a field on each spin  and all the pairwise interactions; the resulting model has `K=n(n+1)/2` interactions. The value of each field parameters is uniformly sampled over `[-h, +h]`; the values of each pairwise parameter is uniformly sampled over `[-J, +J]`.
+ -      
+ -            
 
 Examples of scale-free discrete payoff functions are provided:
  - `double r_linear(int m)` is a linear payoff function;

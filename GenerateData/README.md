@@ -49,6 +49,8 @@ The function doesn't have to be scale-free. In this case, solutions for varying 
 
 Allows you to compute the solution for varying values of `eta` and `c`.
 
+### Ouput files:
+
 ### To compile:
 
 `g++ -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`

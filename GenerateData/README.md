@@ -1,16 +1,18 @@
 # Generating data from a spin model with high order interactions
 
-This simple program generate data from a spin model with any chosen high order spin interactions.
+This simple program generates data from a spin model with any chosen spin interactions. Interactions can be of any order.
 
 The program can use: 
  - pre-defined spin models (i.e., the independent model, and the fully connected pairwise model);
  - randomly generated spin models (see section below);
- - specific spin models defined by the user through an input file (section to be added).
+ - or, chosen spin models specified by the user through an input file (section to be added).
 
 The program then exactly calculate the cumulative distribution for the chosen spin model, and samples a dataset from it.
 
-
-The program offers different ways to define the chosen spin models. 
+In some sense, it is a very basic code, which involves computing the probability of all the `2^n` states of the system with `n` spin variables.
+For that reason the program can still reasonably sample datasets for systems of `n=15 to 20` spins, and for models with `K=100 to 500` interactions. 
+With too large values of `n` the precision (on the uniform sampling) will drop.
+For larg systems the computing time will also quickly increase.
 
 ## Requirements
 
@@ -33,6 +35,8 @@ The code uses the C++11 version of C++.
 For hands-on and simple tests of the program, check the two examples in the function `int main()`.
 
 #### Functions available to define a spin models:
+
+The program offers different ways to define the chosen spin models. 
 
 Examples of scale-free discrete payoff functions are provided:
  - `double r_linear(int m)` is a linear payoff function;

@@ -4,7 +4,7 @@ This simple program generates binary data from a spin model with any chosen spin
 
 The program can use: 
  - pre-defined spin models (i.e., the independent model, and the fully connected pairwise model);
- - randomly generated spin models (see section below);
+ - randomly generated spin models (see description below);
  - or, chosen spin models specified by the user through an input file (section to be added).
 
 The program then exactly calculate the cumulative (multi-dimensional) distribution for the chosen spin model, and randomly samples a dataset from it.
@@ -50,32 +50,27 @@ Each `Interaction I` contains the information about:
 The program offers different ways to define a spin model (i.e., a list of interactions `list<Interaction>`). Here is a list.
 
 #### Pre-defined spin models:
- - the function `list<Interaction> IndepModel(double h=1)` creates an independent model with one field on each spin variable; the value of each field parameters is uniformly sampled over `[-h; +h]`.
- - the function `list<Interaction> FullyConnectedPairwiseModel(double h=1, double J=1)` creates a fully connected pairwise model, i.e., with a field on each spin  and all the pairwise interactions; the resulting model has `K=n(n+1)/2` interactions. The value of each field parameters is uniformly sampled over `[-h, +h]`; the values of each pairwise parameter is uniformly sampled over `[-J, +J]`.
+ - **Independent model**: the function `list<Interaction> IndepModel(double h=1)` creates an independent model with one field on each spin variable; the value of each field parameters is uniformly sampled over `[-h; +h]`.
+ - **Fully connected pairwise model**: the function `list<Interaction> FullyConnectedPairwiseModel(double h=1, double J=1)` creates a fully connected pairwise model, i.e., with a field on each spin  and all the pairwise interactions; the resulting model has `K=n(n+1)/2` interactions. The value of each field parameters is uniformly sampled over `[-h, +h]`; the values of each pairwise parameter is uniformly sampled over `[-J, +J]`.
 
 #### Random spin models:
- -      
+ - **Random pairwise model**: the function `list<Interaction> Random_PairwiseModel(int Kpair, double h=1, double J=1)` creates a model with all the `n` fields and `Kpair` randomly picked pairwise interactions; in total the model has `K=n+Kpair` interactions; the value of each field parameters is uniformly sampled over `[-h, +h]`; the values of each pairwise parameter is uniformly sampled over `[-J, +J]`.
+ - **Random spin model**: the function `list<Interaction> Random_Model(int K, double g=1)` creates a model with `K` randomly picked spin interactions (interactions can be of any order); the value of each parameters is uniformly sampled over `[-g, +g]`.
+
+#### Spin models specified by the user through an input file:
 
          
 ### Other functions available for use in the file `main.cpp` in `int main()`:
 
 For hands-on and simple tests of the program, check the two examples in the function `int main()`.
 
-Examples of scale-free discrete payoff functions are provided:
- - `double r_linear(int m)` is a linear payoff function;
- - `double r_x2(int m)` is a quadratic payoff function;
- - `double r_exp(int m)` is an exponentially decaying payoff function.
-
-One can write any other choice of payoff function in `double r(int m)` as long as the `r(m)` is a decreasing function of `m`. 
-The function doesn't have to be scale-free. In this case, solutions for varying values of `N` can be computed, but will not be rescalable.
-
-### Set the local parameters in the `int main()` function:
-
- - `double eta` = rate at which agents leave their home;
- - `double c` = cost for changing food spot, has a negative value.
-
-Allows you to compute the solution for varying values of `eta` and `c`.
-
 ### Ouput files:
 
+All the output files will be stored in the output folder whose name can be specified in `data.h`.
+
+The output file can be of two types:
+ - a datafile;
+ - the corresponding model used to generate the data.
+
+Creating the datafile and exporting the model is done through two separate functions. However I recommand to always save the model used together with the generated dataset (for instance by using matching filenames -- see example in the `main()` function).
 

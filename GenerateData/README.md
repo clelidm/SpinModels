@@ -21,6 +21,10 @@ For large number `n` of variables, it is recommended to use methods such as Metr
 
 The code uses the C++11 version of C++.
 
+### To compile:
+
+`g++ -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
+
 ## Usage
 
 ### Set global constants in the file `data.h`:
@@ -58,7 +62,4 @@ Allows you to compute the solution for varying values of `eta` and `c`.
 
 ### Ouput files:
 
-### To compile:
-
-`g++ -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
 

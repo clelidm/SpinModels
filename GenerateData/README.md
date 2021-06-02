@@ -13,9 +13,8 @@ The code uses the C++11 version of C++.
 
 ### Set local variables in the file `main.cpp`, in the function `int main()`:
 
-Specify the choice of the parameters:
  - `int K` = number of interactions of the model;
- - `unsigned int N` = number of datapoints.
+ - `unsigned int N` = number of datapoints of the generated dataset.
 
 ### Available functions from the `main.cpp`:
 

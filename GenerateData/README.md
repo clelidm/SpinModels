@@ -57,7 +57,7 @@ The program offers different ways to define a spin model (i.e., a list of intera
  - **Random pairwise model**: the function `list<Interaction> Random_PairwiseModel(int Kpair, double h=1, double J=1)` creates a model with all the `n` fields and `Kpair` randomly picked pairwise interactions; in total the model has `K=n+Kpair` interactions; the value of each field parameters is uniformly sampled over `[-h, +h]`; the values of each pairwise parameter is uniformly sampled over `[-J, +J]`.
  - **Random spin model**: the function `list<Interaction> Random_Model(int K, double g=1)` creates a model with `K` randomly picked spin interactions (interactions can be of any order); the value of each parameters is uniformly sampled over `[-g, +g]`.
 
-#### Spin models specified by the user through an input file:
+#### Spin models specified by the user through an input file: (to come)
 
          
 ### Other functions available for use in the file `main.cpp` in `int main()`:

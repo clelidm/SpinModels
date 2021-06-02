@@ -1,5 +1,17 @@
 # Generating data from a spin model with high order interactions
 
+This simple program generate data from a spin model with any chosen high order spin interactions.
+
+The program can use: 
+ - pre-defined spin models (i.e., the independent model, and the fully connected pairwise model);
+ - randomly generated spin models (see section below);
+ - specific spin models defined by the user through an input file (section to be added).
+
+The program then exactly calculate the cumulative distribution for the chosen spin model, and samples a dataset from it.
+
+
+The program offers different ways to define the chosen spin models. 
+
 ## Requirements
 
 The code uses the C++11 version of C++.

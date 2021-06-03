@@ -41,8 +41,8 @@ The code uses the C++11 version of C++.
 
 A spin model is stored in a list of `Interaction`:  `list<Interaction>`.
 For more information, the structure `Interaction` is defined in `data.h`. 
-Each `Interaction I` contains information about:
- - the operator associated to that interaction, stored as an integer in `I.Op`;
+Each `Interaction I` contains the following attributes:
+ - the spin operator associated to that interaction, stored as an integer in `I.Op`;
  - the value of the real parameter `I.g` associated to the interaction, stored in `double I.g`;
  - the value of the model average of the operator `I.Op`, stored in `I.av_M`;  --> this value is initially set to `0`, and can be computed after definition of the model 
  - the value of the empirical average of the operator `I.Op`, stored in `I.av_D` --> this value is initially set to `0`, and can be computed when a dataset is generated.
@@ -75,17 +75,16 @@ The two following functions can be found in `Models_Ex.cpp` and print informatio
  - **1:Operator Integer:** the integer representation `I.Op` of the operator associated to that interaction;
  - **2:Order:** the order of the interaction;
  - **3:Parameter:** the value `I.g` of the parameter associated to the interaction;
- - **4:Model Average:** the observable associated to that interaction, i.e., the model average of the operator `I.Op`; This will be `0` if this value has not yet been computed.
- - **5:Data Average:** the empirical average of the operator `I.Op` computed on the last dataset generated with that model; This will be `0` if no dataset has been generated yet with the model, or if the value hasn't been computed.
+ - **4:Model Average:** the observable associated to that interaction, i.e., the model average of the operator `I.Op`, which is stored in `I.av_M`; This will be `0` if this value has not yet been computed.
+ - **5:Data Average:** the empirical average of the operator `I.Op` computed on the last dataset generated with that model; This value is stored in `I.av_M`; This will be `0` if no dataset has been generated yet with the model, or if the value hasn't been computed.
  - **6:std:** standard deviation of the distribution of possible data averages of the operator `I.Op` around its model average if one samples random datasets with `N` datapoints; this standard deviation is calculated using:
  `std[<Op>_D] = \sqrt{\frac{(1+<Op>_M)(1-<Op>_D)}{4 N}}`;
  The value will be `0` if a number of datapoints `N` hasn't been specified (`N` is an optional argument for the two printing functions). 
  - **7:Operator Binary:** the binary representation of the operator `I.Op` associated to the interaction.
 
-If a dataset was generated using the function `Sample_dataset_AND_Print_ModelData_Info(list_I, output_filename, N)`, the 
-As an option, these two functions will also print
-
-Additionally the function `void Model_averages_Ising(list<Interaction> &list_I)` computes the model average of each operator `I` in `list_I` (i.e. of the operators of the models) and store it in `I.av_M`. These model averages are also printed out by the two functions just cited.
+Additionally, to compute model and data averages of the spin operators:
+ - the function `void Model_averages_Ising(list<Interaction> &list_I)` computes the model average of each operator `I` in `list_I` and store it in `I.av_M`; 
+ - along generating with generating data, the function `Sample_dataset_AND_Print_ModelData_Info(list_I, output_filename, N)` computes the data average of each operators of `list_I` for the generated dataset, and store it in `I.av_D` (see next section).
 
 ### Generate data:
 
@@ -93,8 +92,7 @@ The following functions are defined in the file `Generate_data_exact.cpp`.
 
  - The function `void Sample_dataset(list<Interaction> list_I, string output_filename, unsigned int N=1000)` samples a dataset  with `N` datapoints from the model defined in `list_I`.
 
- - The function `void Sample_dataset_AND_Print_ModelData_Info(list<Interaction>& list_I, string output_filename, unsigned int N=1000)` does the same, while also filling in the information about the model and the data in the Interactions of `list_I`. 
-In particular the function computes the model and data averages of the operators of the model and fill this information in list_I
+ - The function `void Sample_dataset_AND_Print_ModelData_Info(list<Interaction>& list_I, string output_filename, unsigned int N=1000)` does the same, while also filling in information about the model and the data in the Interactions of `list_I`. More precisely, the function computes the model and data averages of the operators of the model and fill this information in `list_I` (i.e., respectively in `I.av_M` and `I.av_D` for each interaction `I`).
 
 ## Examples:
 
@@ -102,11 +100,11 @@ For hands-on and simple tests of the program, check the two examples in the func
 
 ### Ouput files:
 
-All the output files will be stored in the output folder whose name can be specified in `data.h`.
+All the output files are stored in the output folder whose name is specified in `data.h`.
 
 The output file can be of two types:
- - a datafile;
- - the corresponding model used to generate the data.
+ - a binary datafile;
+ - a file containing information on the model used to generate the data.
 
-Creating the datafile and exporting the model is done through two separate functions. However I recommend to always save the model used together with the generated dataset (for instance by using matching filenames -- see example in the `main()` function).
+Creating the datafile and exporting the model is done through two separate functions (respectively `Sample_dataset` and `PrintFile_ListInteraction` -- see above). However I recommend to always save the model used together with the generated dataset (for instance by using matching filenames -- see example in the `main()` function).
 

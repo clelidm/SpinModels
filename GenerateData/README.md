@@ -67,11 +67,11 @@ The function `void Randomize_param(list<Interaction>& list_I, double g=1)` resam
 
 ### Get information on your model:
 
-The two following functions can be found in `Models_Ex.cpp` and print information about the model defined in `list_I`:
+The two following functions can be found in `Models_Ex.cpp` and print information about the model defined by `list_I`:
  - `void PrintTerm_ListInteraction (list<Interaction> list_I, unsigned int N=1)` prints in the terminal;
  - `void PrintFile_ListInteraction(list<Interaction> list_I, string output_filename, unsigned int N=1)` prints in the file named `output_filename`.
 
-**Information printed:** For each interaction `I` in the model defined in `list_I` is printed the following information:
+**Information printed:** For each interaction `I` in the model defined by `list_I` is printed the following information:
  - **1:Operator:** the integer representation `I.Op` of the operator associated to that interaction;
  - **2:Order:** the order of the interaction;
  - **3:Parameter:** the value `I.g` of the parameter associated to the interaction;

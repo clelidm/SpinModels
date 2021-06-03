@@ -27,7 +27,7 @@ The code uses the C++11 version of C++.
 
 ## Usage
 
-### Set global constants in the file `data.h`:
+### Set global variables in the file `data.h`:
 
  - Specify the Output directory in `const string OUTPUT_directory`. All the generated files will be placed in this folder.
  - Specify the number of variables on which the model is based in `const unsigned int n`. The generated dataset will have the same number of variables.

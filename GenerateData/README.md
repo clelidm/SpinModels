@@ -77,13 +77,13 @@ The two following functions can be found in `Models_Ex.cpp` and print informatio
  - **3:Parameter:** the value `I.g` of the parameter associated to the interaction;
  - **4:Model Average:** the observable associated to that interaction, i.e., the model average of the operator `I.Op`; This will be `0` if this value has not yet been computed.
  - **5:Data Average:** the empirical average of the operator `I.Op` computed on the last dataset generated with that model; This will be `0` if no dataset has been generated yet with the model, or if the value hasn't been computed.
- - **6:std:** standard deviation of the distribution of possible data <Op> averages around the model average; this standard deviation is calculated using:
- $`std[<Op>_D] = \sqrt{\frac{(1+<Op>_M)(1-<Op>_D)}{4 N}}`$
+ - **6:std:** standard deviation of the distribution of possible data averages of the operator `I.Op` around its model average if one samples random datasets with `N` datapoints; this standard deviation is calculated using:
+ `std[<Op>_D] = \sqrt{\frac{(1+<Op>_M)(1-<Op>_D)}{4 N}}`;
+ The value will be `0` if a number of datapoints `N` hasn't been specified (`N` is an optional argument for the two printing functions). 
  - **7:Operator Binary:** the binary representation of the operator `I.Op` associated to the interaction.
 
 If a dataset was generated using the function `Sample_dataset_AND_Print_ModelData_Info(list_I, output_filename, N)`, the 
 As an option, these two functions will also print
-
 
 Additionally the function `void Model_averages_Ising(list<Interaction> &list_I)` computes the model average of each operator `I` in `list_I` (i.e. of the operators of the models) and store it in `I.av_M`. These model averages are also printed out by the two functions just cited.
 

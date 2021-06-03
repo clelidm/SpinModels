@@ -41,11 +41,11 @@ The code uses the C++11 version of C++.
 
 A spin model is stored in a list of `Interaction`:  `list<Interaction>`.
 For more information, the structure `Interaction` is defined in `data.h`. 
-Each `Interaction I` contains the information about:
- - the operator associated to that interaction: stored as an integer in `I.Op`;
- - the value of the real parameter `I.g` associated to the interaction: stored in `double I.g`;
- - the value of the model average of the operator `I.Op`: stored in `I.av_M`;  --> this value is initially set to `0`, and can be computed after definition of the model 
- - the value of the empirical average of the operator `I.Op`: stored in `I.av_D` --> this value is initially set to `0`, and can be computed when a dataset is generated.
+Each `Interaction I` contains information about:
+ - the operator associated to that interaction, stored as an integer in `I.Op`;
+ - the value of the real parameter `I.g` associated to the interaction, stored in `double I.g`;
+ - the value of the model average of the operator `I.Op`, stored in `I.av_M`;  --> this value is initially set to `0`, and can be computed after definition of the model 
+ - the value of the empirical average of the operator `I.Op`, stored in `I.av_D` --> this value is initially set to `0`, and can be computed when a dataset is generated.
 
 list_I = list of operators and parameters of the model
 

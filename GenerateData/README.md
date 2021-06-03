@@ -23,7 +23,7 @@ The code uses the C++11 version of C++.
 
 ### To compile:
 
-`g++ -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
+`g++ -std=c++11 -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
 
 ## Usage
 

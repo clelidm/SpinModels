@@ -72,12 +72,14 @@ The two following functions can be found in `Models_Ex.cpp` and print informatio
  - `void PrintFile_ListInteraction(list<Interaction> list_I, string output_filename, unsigned int N=1)` prints in the file named `output_filename`.
 
 **Information printed:** For each interaction `I` in the model defined by `list_I` is printed the following information:
- - **1:Operator:** the integer representation `I.Op` of the operator associated to that interaction;
+ - **1:Operator Integer:** the integer representation `I.Op` of the operator associated to that interaction;
  - **2:Order:** the order of the interaction;
  - **3:Parameter:** the value `I.g` of the parameter associated to the interaction;
  - **4:Model Average:** the observable associated to that interaction, i.e., the model average of the operator `I.Op`; This will be `0` if this value has not yet been computed.
  - **5:Data Average:** the empirical average of the operator `I.Op` computed on the last dataset generated with that model; This will be `0` if no dataset has been generated yet with the model, or if the value hasn't been computed.
- - **6:** the standard deviation
+ - **6:std:** standard deviation of the distribution of possible data <Op> averages around the model average; this standard deviation is calculated using:
+ std[<Op>_D] = \sqrt{\frac{(1+<Op>_M)(1-<Op>_D)}{4 N}}
+ - **7:Operator Binary:** the binary representation of the operator `I.Op` associated to the interaction.
 
 If a dataset was generated using the function `Sample_dataset_AND_Print_ModelData_Info(list_I, output_filename, N)`, the 
 As an option, these two functions will also print

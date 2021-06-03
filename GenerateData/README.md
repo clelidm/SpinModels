@@ -47,7 +47,7 @@ Each `Interaction I` contains the information about:
  - the value of the model average of the operator `I.Op`: stored in `I.av_M`;  --> this value is initially set to `0`, and can be computed after definition of the model 
  - the value of the empirical average of the operator `I.Op`: stored in `I.av_D` --> this value is initially set to `0`, and can be computed when a dataset is generated.
 
-The program offers different ways to define a spin model (i.e., a list of interactions `list<Interaction>`). Here is a list.
+The program offers different ways to define a spin model (i.e., a list of interactions `list<Interaction>`).  These functions are defined in the file `Models_Ex.cpp`. Here is a list:
 
 #### Pre-defined spin models:
  - **Independent model**: the function `list<Interaction> IndepModel(double h=1)` creates an independent model with one field on each spin variable; the value of each field parameters is uniformly sampled over `[-h; +h]`.
@@ -60,7 +60,7 @@ The program offers different ways to define a spin model (i.e., a list of intera
 #### Spin models specified by the user through an input file: (to come)
 
 #### Changing the values of the parameters:
-The function 
+The function `void Randomize_param(list<Interaction>& list_I, double g=1)` resamples the value of the parameters of the model given as an argument of the function as `list<Interaction> list_I`. Each parameter of the model is then resampled uniformly in `[-g, g]`.
 
 ### Get information on your model:
 

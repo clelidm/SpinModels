@@ -98,7 +98,7 @@ The following functions are defined in the file `Generate_data_exact.cpp`.
 
 For hands-on and simple tests of the program, check the two examples in the function `int main()` of the `main.cpp` file.
 
-### Ouput files:
+## Ouput files:
 
 All the output files are stored in the output folder whose name is specified in `data.h`.
 

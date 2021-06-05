@@ -98,13 +98,13 @@ The following functions are defined in the file `Generate_data_exact.cpp`.
 
  - The function `void Sample_dataset_AND_Print_ModelData_Info(list<Interaction>& list_I, string output_filename, unsigned int N=1000)` does the same, while also filling in information about the model and the data in the Interactions of `list_I`. More precisely, the function computes the model and data averages of the operators of the model and fill this information in `list_I` (i.e., respectively in `I.av_M` and `I.av_D` for each interaction `I`).
 
-## Examples:
+## Examples
 
 All the functions that can be used from `int main()` are declared at the beginning of the `main.cpp` file.
 
 For hands-on and simple tests of the program, check the two examples in the function `int main()` of the `main.cpp` file.
 
-## Ouput files:
+## Ouput files
 
 All the output files are stored in the output folder whose name is specified in `data.h`.
 

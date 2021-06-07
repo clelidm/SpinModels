@@ -112,5 +112,5 @@ The output file can be of two types:
  - a binary datafile;
  - a file containing information on the model used to generate the data.
 
-Creating the datafile and exporting the model is done through two separate functions (respectively `Sample_dataset` and `PrintFile_ListInteraction` -- see above). However I recommend to always save the model used together with the generated dataset (for instance by using matching filenames -- see example in the `main()` function).
+Creating the datafile and exporting the model is done through two separate functions (respectively `Sample_dataset` and `PrintFile_ListInteraction` -- see above). However I recommend to always save the model used together with the generated dataset using matching filenames (see example in the `main()` function). For that you can use the function `string filename_extension(int K, int i=-1)` for instance.
 

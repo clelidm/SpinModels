@@ -21,13 +21,9 @@ For large number `n` of variables, it is recommended to use methods such as a Me
 
 The code uses the C++11 version of C++.
 
-### To compile:
+**To compile:**  `g++ -std=c++11 -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
 
-`g++ -std=c++11 -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
-
-### To execute:
-
-`./a.out`
+**To execute:** `./a.out`
 
 ## Usage
 

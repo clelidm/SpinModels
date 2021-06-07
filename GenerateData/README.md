@@ -25,6 +25,10 @@ The code uses the C++11 version of C++.
 
 `g++ -std=c++11 -O3 main.cpp Models_Ex.cpp Generate_data_exact.cpp`
 
+### To execute:
+
+`./a.out`
+
 ## Usage
 
 ### Set global variables in the file `data.h`:

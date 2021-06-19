@@ -76,7 +76,7 @@ Here are some examples of the two representations of an operator in a 4-spin sys
 
 See `/INPUT/Model_Ex_BinaryRepresentation.dat` for an example of a file written in format (a), and `/INPUT/Model_Ex_IntegerRepresentation.dat` for an example of a file written in format (b).
 
-Two read these files from the `int main()` function, you can use the function:
+Two read these files from the `int main()` function, use the function:
  - `list<Interaction> ReadFile_Model_BinaryRepresentation(string Model_inputfile)` if the operators are written under binary format (a);
  - `list<Interaction> ReadFile_Model_IntegerRepresentation(string Model_inputfile)` if the operators are written under integer format (b);
 

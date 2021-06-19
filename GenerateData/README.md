@@ -25,6 +25,14 @@ The code uses the C++11 version of C++.
 
 **To execute:** `./a.out`
 
+## Examples
+
+All the functions that can be used from `int main()` are declared at the beginning of the `main.cpp` file and described below.
+
+For hands-on and simple tests of the program, check the examples in the `int main()` function of the `main.cpp` file.
+
+--
+
 ## Usage
 
 ### Set global variables in the file `data.h`:
@@ -112,12 +120,6 @@ The following functions are defined in the file `Generate_data_exact.cpp`.
  - The function `void Sample_dataset(list<Interaction> list_I, string output_filename, unsigned int N=1000)` samples a dataset  with `N` datapoints from the model defined in `list_I`.
 
  - The function `void Sample_dataset_AND_Print_ModelData_Info(list<Interaction>& list_I, string output_filename, unsigned int N=1000)` does the same, while also filling in information about the model and the data in the Interactions of `list_I`. More precisely, the function computes the model and data averages of the operators of the model and fill this information in `list_I` (i.e., respectively in `I.av_M` and `I.av_D` for each interaction `I`).
-
-## Examples
-
-All the functions that can be used from `int main()` are declared at the beginning of the `main.cpp` file.
-
-For hands-on and simple tests of the program, check the two examples in the function `int main()` of the `main.cpp` file.
 
 ## Ouput files
 

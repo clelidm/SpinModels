@@ -7,7 +7,7 @@ The program can use:
  - randomly generated spin models (see description below);
  - or, chosen spin models specified by the user through an input file (section to be added).
 
-The program then exactly calculate the cumulative (multi-dimensional) distribution for the chosen spin model, and randomly samples a dataset from it.
+The program then exactly calculates the cumulative (multi-dimensional) distribution for the chosen spin model, and randomly samples a dataset from it.
 The system is assumed stationary, and all datapoints are independently randomly sampled from that same distribution.
 
 In some sense, it is a very basic code, which computes the probability of all the `2^n` states accessible to a system with `n` spin variables.
@@ -65,14 +65,20 @@ The program offers different ways to define a spin model (i.e., a list of intera
 
 #### Spin models specified by the user through an input file: (see example 3 in the `int main()` function)
 Specific models can be uploaded through an input file. The input file must have the following form (see example in "INPUT/"):
- - the first column must contain the operators of the model written in on of the following two forms:
-   - a. as a binary representation of the spin involved in the interaction; 
-   - b. as the integer value of that binary representation.
- - the second column must contains the values of the parameter encoding the strength of the interaction 
-   
-Here is some examples of the two representations of an operator for a 4-spin system:  
- - a field operator on the last digit would be encoded as 0001, which has the integer representation 1  -->   0001 = 1
- - a pairwise operator s1 and s2 would be written as 0011,  which has the integer representation 3  -->   0011 = 3
+ - the operator of the model must be written in the first column, in one of these two formats:
+   - (a) as a binary representation of the spin involved in the interaction; 
+   - (b) as the integer value of that binary representation.
+ - the parameters specifying the strength of the interactions must be written in the second column.
+
+Here are some examples of the two representations of an operator in a 4-spin system:  
+ - a field operator on the last digit would be encoded as the binary number `0001`, which has the decimal integer value `1`  -->   0001 = 1
+ - a pairwise operator s1 and s2 would be written as the binary number `0011`,  which has the integer representation `3`  -->   0011 = 3
+
+See `/INPUT/Model_Ex_BinaryRepresentation.dat` for an example of a file written in format (a), and `/INPUT/Model_Ex_IntegerRepresentation.dat` for an example of a file written in format (b).
+
+Two read these files from the `int main()` function, you can use the function:
+ - `list<Interaction> ReadFile_Model_BinaryRepresentation(string Model_inputfile)` if the operators are written under binary format (a);
+ - `list<Interaction> ReadFile_Model_IntegerRepresentation(string Model_inputfile)` if the operators are written under integer format (b);
 
 #### Changing the values of the parameters:
 

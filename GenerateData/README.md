@@ -66,8 +66,8 @@ The program offers different ways to define a spin model (i.e., a list of intera
 #### Spin models specified by the user through an input file: (see example 3 in the `int main()` function)
 Specific models can be uploaded through an input file. The input file must have the following form (see example in "INPUT/"):
  - the first column must contain the operators of the model written in on of the following two forms:
-        a)
-        b)
+   - ahghgkjhg 
+   - b. sas
  - the second column must contains the values of the parameter encoding the strength of the interaction 
    
 #### Changing the values of the parameters:

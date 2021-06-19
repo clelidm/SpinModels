@@ -306,7 +306,6 @@ list<Interaction> ReadFile_Model_BinaryRepresentation(string Model_inputfile)
   string line, temp;    
   stringstream sstream; 
 
-  uint32_t Op = 0;
   double g=0;
 
   if (myfile.is_open())

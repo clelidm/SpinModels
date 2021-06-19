@@ -31,7 +31,7 @@ All the functions that can be used from `int main()` are declared at the beginni
 
 For hands-on and simple tests of the program, check the examples in the `int main()` function of the `main.cpp` file.
 
---
+----
 
 ## Usage
 

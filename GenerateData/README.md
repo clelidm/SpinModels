@@ -66,10 +66,14 @@ The program offers different ways to define a spin model (i.e., a list of intera
 #### Spin models specified by the user through an input file: (see example 3 in the `int main()` function)
 Specific models can be uploaded through an input file. The input file must have the following form (see example in "INPUT/"):
  - the first column must contain the operators of the model written in on of the following two forms:
-   - ahghgkjhg 
-   - b. sas
+   - a. as a binary representation of the spin involved in the interaction; 
+   - b. as the integer value of that binary representation.
  - the second column must contains the values of the parameter encoding the strength of the interaction 
    
+Here is some examples of the two representations of an operator for a 4-spin system:  
+ - a field operator on the last digit would be encoded as 0001, which has the integer representation 1  -->   0001 = 1
+ - a pairwise operator s1 and s2 would be written as 0011,  which has the integer representation 3  -->   0011 = 3
+
 #### Changing the values of the parameters:
 
 The function `void Randomize_param(list<Interaction>& list_I, double g=1)` resamples the value of the parameters of the model given as an argument of the function as `list<Interaction> list_I`. Each parameter of the model is then resampled uniformly in `[-g, g]`.

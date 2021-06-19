@@ -52,6 +52,10 @@ list<Interaction> Random_Model(int K, double g=1)  // main function
 // *** Randomize the parameter values of a given model:  ************** //
 void Randomize_param(list<Interaction>& list_I, double g=1);
 
+// *** Read model from an input file:  ******************************** //
+list<Interaction> ReadFile_Model_IntegerRepresentation(string Model_inputfile);
+list<Interaction> ReadFile_Model_BinaryRepresentation(string Model_inputfile);
+
 /********************************************************************/
 /*****************    GENERATE_DATA_EXACT.CPP    ********************/
 /********************************************************************/
@@ -100,9 +104,9 @@ int main()
   cout << "--->> Create OUTPUT Folder: (if needed) ";
   system( ("mkdir -p " + OUTPUT_directory).c_str() );
 
-// ******************************************************************* //
-// ***********************  EXAMPLE 1   ****************************** //
-// ******************************************************************* //
+  cout << endl << "*************************************************************************************";
+  cout << endl << "**********************************  EXAMPLE 1 :  ************************************";
+  cout << endl << "*************************************************************************************" << endl;
 
 // *** Choose a model:
   int K=20; // total number of interactions
@@ -139,10 +143,11 @@ int main()
   PrintTerm_ListInteraction(list_I, N);  // print in the terminal
   PrintFile_ListInteraction(list_I, model_filename, N);  // print model in a file
 
-// ******************************************************************* //
-// ***********************  EXAMPLE 2   ****************************** //
-// *****  FIXED MODEL ARCHITECTURE + RANDOMIZE PARAMETER VALUES  ***** //
-// ******************************************************************* //
+  cout << endl << "*************************************************************************************";
+  cout << endl << "**********************************  EXAMPLE 2 :  ************************************";
+  cout << endl << "*************   FIXED MODEL ARCHITECTURE + RANDOMIZE PARAMETER VALUES   *************";
+  cout << endl << "*************************************************************************************" << endl;
+
   int Ntot_randM = 10;
   N = 1000; //number of datapoints
   string file_extension;
@@ -163,6 +168,15 @@ int main()
     //Model_averages_Ising(list_I);
     PrintFile_ListInteraction(list_I, file_extension + "_Info.dat", N);  // print model in a file
   }
+
+  cout << endl << "*************************************************************************************";
+  cout << endl << "**********************************  EXAMPLE 3 :  ************************************";
+  cout << endl << "*************************   READ MODEL FROM INPUT FILE   ****************************";
+  cout << endl << "*************************************************************************************" << endl;
+
+  //list_I = ReadFile_Model_IntegerRepresentation("INPUT/Model_Ex_IntegerRepresentation.dat");
+  list_I = ReadFile_Model_BinaryRepresentation("INPUT/Model_Ex_BinaryRepresentation.dat");
+  PrintTerm_ListInteraction(list_I);  // print in the terminal
   
   return 0;
 }

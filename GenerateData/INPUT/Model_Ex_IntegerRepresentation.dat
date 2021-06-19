@@ -1,0 +1,37 @@
+##******************************************************************************/ 
+##******  Structure of input file:    ******************************************/
+##******  1) operators should be written under form a) or b) (see below) *******/ 
+##******  2) FIRST COLUMN  = operators (one per line)                         **/ 
+##******  3) SECOND COLUMN = corresponding parameter value                    **/ 
+##******  4) values beyond the two first columns will not be read             **/ 
+##******************************************************************************/  
+##******************************************************************************/ 
+##*** Operators/interactions can be written in two different versions:   *******/ 
+##***   a) as a binary representation of the spin involved in the interaction; */ 
+##***   b) as the integer value of that binary representation.                 */  
+##******************************************************************************/  
+##****  Ex. for a system with n=4 spin:  ***************************************/ 
+##****      -- a field operator on the last digit would be encoded as 0001,   **/ 
+##****      which has the integer representation 1  -->   0001 = 1      ********/ 
+##****      -- a pairwise operator s1 and s2 would be written as 0011,  ********/ 
+##****      which has the integer representation 3  -->   0011 = 3      ********/ 
+##******************************************************************************/ 
+##******************************************************************************/ 
+##*****   Example for version b):    *******************************************/ 
+##*****      Operators are written as the integer values of the binary   *******/ 
+##*****      representation of the interactions           **********************/ 
+##******************************************************************************/ 
+##
+##  #1:Operator_int  #2:g_Ising 	#3:Operator_bin (not used here)
+##
+5942	 0.320034		 001011100110110
+5974	 -0.700847		 001011101010110
+10345	 -0.377073	 	 010100001101001
+14360	 0.276315		 011100000011000
+16261	 -0.23665		 011111110000101
+22219	 -0.0363311	 	 101011011001011
+26200	 -0.446723	 	 110011001011000
+28888	 0.145264		 111000011011000
+32418	 -0.0054656	 	 111111010100010
+32640	 -0.0965578		 111111110000000
+

@@ -1,0 +1,37 @@
+##******************************************************************************/ 
+##******  Structure of input file:    ******************************************/
+##******  1) operators should be written under form a) or b) (see below) *******/ 
+##******  2) FIRST COLUMN  = operators (one per line)                         **/ 
+##******  3) SECOND COLUMN = corresponding parameter value                    **/ 
+##******  4) values beyond the two first columns will not be read             **/ 
+##******************************************************************************/  
+##******************************************************************************/ 
+##*** Operators/interactions can be written in two different versions:   *******/ 
+##***   a) as a binary representation of the spin involved in the interaction; */ 
+##***   b) as the integer value of that binary representation.                 */  
+##******************************************************************************/  
+##****  Ex. for a system with n=4 spin:  ***************************************/ 
+##****      -- a field operator on the last digit would be encoded as 0001,   **/ 
+##****      which has the integer representation 1  -->   0001 = 1      ********/ 
+##****      -- a pairwise operator s1 and s2 would be written as 0011,  ********/ 
+##****      which has the integer representation 3  -->   0011 = 3      ********/ 
+##******************************************************************************/ 
+##******************************************************************************/ 
+##*****   Example for version a):    *******************************************/ 
+##*****      Operators are written using the binary       **********************/ 
+##*****      representation of the interactions           **********************/ 
+##******************************************************************************/ 
+##
+##  #1:Operator_bin  #2:g_Ising 	#3:Operator_int (not used here)
+##
+001011100110110	  0.320034		5942
+001011101010110	  -0.700847		5974
+010100001101001	  -0.377073	 	10345
+011100000011000	  0.276315		14360
+011111110000101	  -0.23665		16261
+101011011001011	  -0.0363311	 	22219
+110011001011000	  -0.446723	 	26200
+111000011011000	  0.145264		28888
+111111010100010	  -0.0054656	 	32418
+111111110000000	  -0.0965578		32640	
+	

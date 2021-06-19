@@ -2,6 +2,7 @@
 #include <list>
 #include <set>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 /********************************************************************/
@@ -258,7 +259,6 @@ list<Interaction> Random_Model_aux(mt19937 gen, int K, double g=1)
   return list_I;
 } 
 
-
 /******************************************************************************/
 /*********************     RANDOMIZE PARAMETER VALUES    **********************/
 /******************************************************************************/
@@ -271,3 +271,126 @@ void Randomize_param(list<Interaction>& list_I, double g=1)
     (*it).av_D = 0;   // clean data averages
   }
 }
+
+/******************************************************************************/
+/**********************     READ A MODEL from FILE   **************************/
+/******************************************************************************/
+/******  Structure of input file:    ******************************************/
+/******  1) operators should be written under form a) or b) (see below) *******/
+/******  2) First column  = operators (one per line)                         **/
+/******  3) Second column = corresponding parameter value                    **/
+/******************************************************************************/
+
+/******************************************************************************/
+/*** Operators/interactions can be written in two different versions:   *******/
+/***   a) as a binary representation of the spin involved in the interaction; */
+/***   b) as the integer value of that binary representation.                 */
+/******************************************************************************/
+/****  Ex. for a system with n=4 spin:  ***************************************/
+/****      -- a field operator on the last digit would be encoded as 0001,   **/
+/****      which has the integer representation 1  -->   0001 = 1      ********/
+/****      -- a pairwise operator s1 and s2 would be written as 0011,  ********/
+/****      which has the integer representation 3  -->   0011 = 3      ********/
+
+
+/******************************************************************************/
+/*** VERSION a) Operators are written using the binary       ******************/
+/****           representation of the interactions           ******************/
+/******************************************************************************/
+list<Interaction> ReadFile_Model_BinaryRepresentation(string Model_inputfile)
+{
+  Interaction I;
+  list<Interaction> list_I;
+
+  ifstream myfile (Model_inputfile.c_str());
+  string line, temp;    
+  stringstream sstream; 
+
+  uint32_t Op = 0;
+  double g=0;
+
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line))
+    {
+      line+=" ";
+      sstream << line;   // Storing the whole string into string stream
+      sstream >> temp;   // extracting first "word" from stream
+
+      if ( temp.size() == n )   // Checking the given "word" is integer or not
+      { 
+        I.Op = bitset<n>(temp).to_ulong();      //cout << "Op = " << I.Op << "\t = " << bitset<n>(I.Op) << endl;
+
+        temp = "";
+        sstream >> temp;  // extracting second "word" from stream
+
+        if (stringstream(temp) >> g) 
+        {
+          I.g = g;    //cout << "g = " << g << endl; // << "\t temp = " << temp << end;
+        }
+        else   {  I.g = 0;  }
+
+        I.av_M = 0;         I.av_D = 0;
+        list_I.push_back(I);
+      }
+      temp = "";
+      sstream.str("");
+    }
+  }
+
+  myfile.close();
+
+  return list_I;
+}
+
+/******************************************************************************/
+/*** VERSION b) Operators are written as the integer values of the binary *****/
+/****           representation of the interactions           ******************/
+/******************************************************************************/
+list<Interaction> ReadFile_Model_IntegerRepresentation(string Model_inputfile)
+{
+  Interaction I;
+  list<Interaction> list_I;
+
+  ifstream myfile (Model_inputfile.c_str());
+  string line, temp;    
+  stringstream sstream; 
+
+  uint32_t Op = 0;
+  double g=0;
+
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line))
+    {
+      line+=" ";
+      sstream << line;   // Storing the whole string into string stream
+      sstream >> temp;   // extracting first "word" from stream
+
+      if (stringstream(temp) >> Op)   // Checking the given "word" is integer or not
+      { 
+        I.Op = Op;        //cout << "Op = " << Op << "\t = " << bitset<n>(Op) << "\t";
+
+        temp = "";
+        sstream >> temp;  // extracting second "word" from stream
+
+        if (stringstream(temp) >> g) 
+        {
+          I.g = g;    //cout << "g = " << g << endl; // << "\t temp = " << temp << end;
+        }
+        else   {  I.g = 0;  }
+
+        I.av_M = 0;         I.av_D = 0;
+        list_I.push_back(I);
+      }
+      temp = "";
+      sstream.str("");
+    }
+  }
+
+  myfile.close();
+
+  return list_I;
+}
+
+

@@ -1,4 +1,4 @@
-# Generating data from a spin model with high order interactions
+# Generating Data from Spin Models with High Order Interactions
 
 This simple program generates binary data from a spin model with any chosen spin interactions. Interactions can be of any order.
 

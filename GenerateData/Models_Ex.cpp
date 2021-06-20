@@ -138,6 +138,8 @@ list<Interaction> Random_PairwiseModel_aux(mt19937 gen, int Kpair, double h=0.5,
 // and "Kpair" pairwise interactions chosen randomly
 // Very basic version
 {
+  cout << "Kpair = " << Kpair << endl;
+
   list<Interaction> list_I;
   int Kpair_tot = n*(n-1)/2;
   //cout << "Kpair_tot = " << Kpair_tot << endl;
@@ -153,7 +155,8 @@ list<Interaction> Random_PairwiseModel_aux(mt19937 gen, int Kpair, double h=0.5,
   Interaction I;
   uint32_t Op = 1;
 
-  for(int i=1; i<=n; i++) // n fields
+// *** Add the n fields:
+  for(int i=1; i<=n; i++)
   {
     I.Op = Op;
     I.g = rand_param(h);
@@ -163,9 +166,8 @@ list<Interaction> Random_PairwiseModel_aux(mt19937 gen, int Kpair, double h=0.5,
     Op = Op << 1;
   }
 
-  Op = 0;
+// *** Store all the pairwise interactions:
   uint32_t Op1 = 1, Op2 = 1;
-
   int index=0;
 
   double* v_allPairwise = (double *)malloc(Kpair_tot*sizeof(double));
@@ -186,22 +188,29 @@ list<Interaction> Random_PairwiseModel_aux(mt19937 gen, int Kpair, double h=0.5,
     Op1 = Op1 << 1;      
   }
 
-  // Select Kmin elements
+// *** Randomly select Kmin elements:
   int Kmin = (Kpair < Kpair_tot/2)? Kpair : (Kpair_tot-Kpair);
   int count=0;
 
   std::uniform_int_distribution<int> uni(0.,Kpair_tot-1);
   
+  int eta=0;
   while(count < Kmin)
   { 
-    if( !(v_selected[uni(gen)]) ) 
+    eta=uni(gen);
+    //cout << eta << ":";
+    if( !(v_selected[eta]) ) 
     { 
-      v_selected[uni(gen)]=true;
+      //cout << v_selected[eta] << " selected, count = " << count << endl;
+      v_selected[eta]=true;
       count++;
     }
+    //else {    cout << "rejected" << endl;}
   }
+
   //cout << "Kmin = " << Kmin << endl;
 
+// *** Add the K pairwise interactions to the model:
   bool select_bool = (Kmin == Kpair)? true : false;
 
   for(int i=0; i<Kpair_tot; i++)
@@ -213,6 +222,12 @@ list<Interaction> Random_PairwiseModel_aux(mt19937 gen, int Kpair, double h=0.5,
       I.av_M = 0;         I.av_D = 0;
       list_I.push_back(I);
     }
+  }
+
+  if (list_I.size() != (Kpair + n)) 
+  { 
+    cout << " !! Error function `Random_PairwiseModel_aux()` !!" << endl;
+    cout << " The number of pairwise interactions sampled doesn't match the requested number." << endl;  
   }
   //cout << list_I.size() << "\t " << Kpair + n << endl;
   }

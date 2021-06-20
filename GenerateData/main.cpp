@@ -110,12 +110,15 @@ int main()
 
 // *** Choose a model:
   int K=20; // total number of interactions
-  list<Interaction> list_I = Random_PairwiseModel(K); 
+  list<Interaction> list_I = Random_PairwiseModel(K);   // generate a model with [all field] + [K random pairwise interactions]
 
 // *** Other examples of models: 
   //list<Interaction> list_I = IndepModel();
   //list<Interaction> list_I = FullyConnectedPairwiseModel();
   //list<Interaction> list_I = Random_Model(K);
+
+  cout << "Total number of interactions requested = n + K = " << n << "+" << K << "=" << n+K << endl;
+  cout << "Total number of interactions sampled = " << list_I.size() << endl << endl;
 
 // *** Compute the model average of the selected operators:
   // (* This function is a time consuming and it is not necessary *)
@@ -178,6 +181,7 @@ int main()
   list_I = ReadFile_Model_BinaryRepresentation("INPUT/Model_Ex_BinaryRepresentation.dat");
   PrintTerm_ListInteraction(list_I);  // print in the terminal
   
+
   return 0;
 }
 

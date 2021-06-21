@@ -41,6 +41,7 @@ list<Interaction> FullyConnectedPairwise();
 
 /**************************** READ MODEL FROM FILE ****************************/
 list<Interaction> Read_Op_IntegerRepresentation_fromFile(string datafilename);
+list<Interaction> Read_Op_BinaryRepresentation_fromFile(string datafilename);
 
 /************************* PRINT MODEL in TERMINAL ****************************/
 void PrintTerm_ListInteraction (list<Interaction> list_I);

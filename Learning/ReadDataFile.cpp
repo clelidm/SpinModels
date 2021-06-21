@@ -1,5 +1,6 @@
 #include <fstream>
 #include <map>
+#include <bitset>
 
 using namespace std;
 
@@ -28,7 +29,8 @@ map<uint32_t, unsigned int> read_datafile(string datafilename, unsigned int *N) 
     while ( getline (myfile,line))
     {
       line2 = line.substr (0,n);          //take the n first characters of line
-      nb = bitset<n>(line2).to_ulong();   //convert string line2 into a binary integer
+      nb = 
+        <n>(line2).to_ulong();   //convert string line2 into a binary integer
       Nset[nb] += 1;
       (*N)++;
     }

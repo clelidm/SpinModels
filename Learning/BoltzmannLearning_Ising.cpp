@@ -140,6 +140,7 @@ public:
       grad[i] = -((double) N) * ( (*I).av_D - (*I).av_M); 
       i++;
     } 
+    free(P);
 
     return -LogLi;
   }
@@ -187,6 +188,7 @@ double BoltzmannLearning_Ising(map<uint32_t, unsigned int> Nset, list<Interactio
   //updating the model averages:
   double Z = 0; double *P = Probability_AllStates_Ising(list_I, &Z);
   Model_averages_Ising(P, Z, list_I, N);
+  free(P);
 
   cout << "Number of iterations: " << niter << " iterations" << std::endl;
 

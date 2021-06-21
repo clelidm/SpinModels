@@ -148,6 +148,7 @@ public:
       grad[i] = -((double) N) * ( (*I).av_D - (*I).av_M); 
       i++;
     } 
+    free(P);
 
     return -LogLi;
   }
@@ -184,6 +185,7 @@ double BoltzmannLearning_ACE(map<uint32_t, unsigned int> Nset, list<Interaction>
   //updating the model averages:
   double Z = 0; double *P = Probability_AllStates_ACE(list_I, &Z);
   Model_averages_ACE(P, Z, list_I, N);
+  free(P);
 
   cout << "Number of iterations: " << niter << " iterations" << std::endl;
 

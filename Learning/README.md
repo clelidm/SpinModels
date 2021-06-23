@@ -1,6 +1,6 @@
 # Inference
 
-Program that fits binary datasets with a chosen spin model with any high order interactions.
+Program that fits binary data with a specify spin model with interactions of any order.
 
 ## Requirements
 

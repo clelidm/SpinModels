@@ -6,6 +6,9 @@ Program that fits binary datasets with a chosen spin model with any high order i
 
 The code uses the C++11 version of C++.
 
+It also uses the two header-only C++ libraries: Eigen and LBFGS++ (L-BFGS solver).
+Remember to specify the paths to the two libraries to your compiler (see below).
+
 **To compile:**  `g++ -I /usr/local/include/eigen3/ -I ./LBFGSpp-master/include -O2 main.cpp Models.cpp ReadDataFile.cpp BoltzmannLearning_Ising.cpp BoltzmannLearning_ACE.cpp`
 
 **To execute:** `./a.out`

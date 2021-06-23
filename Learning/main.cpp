@@ -94,7 +94,7 @@ int main()
   
   cout << "Number of parameters, K = " << K << endl;
   cout << "Max Log-Likelihood, L = " << L << endl;
-  cout << "BIC: " << L - K * log( ((double) N) /2.) / 2. <<  endl << endl;
+  cout << "BIC: " << L - K * log( ((double) N) /(2.*M_PI)) / 2. <<  endl << endl;
 
   cout << endl << "****************************  Fully connected pairwise model:  *****************************" << endl;
 
@@ -114,7 +114,7 @@ int main()
 
   cout << "FullyConnectedPairwise: K = " << K << endl;
   cout << "Max Log-Likelihood, L = " << L << endl;
-  cout << "BIC: " << L - K * log( ((double) N) /2.) / 2. <<  endl << endl;
+  cout << "BIC: " << L - K * log( ((double) N) /(2.*M_PI)) / 2. <<  endl << endl;
   PrintTerm_ListInteraction (list_I_pairwise);
 
 
@@ -127,7 +127,7 @@ int main()
 
   cout << "FullyConnectedPairwise: K = " << K << endl;
   cout << "Max Log-Likelihood, L = " << L << endl;
-  cout << "BIC: " << L - K * log( ((double) N) /2.) / 2. <<  endl << endl;
+  cout << "BIC: " << L - K * log( ((double) N) /(2.*M_PI)) / 2. <<  endl << endl;
   PrintTerm_ListInteraction (list_I_pairwise);
 
 // ************** Fit a model defined in input file:
@@ -139,7 +139,7 @@ int main()
   cout << "--->> Finding best parameters (gradient descent), for {-1,1}-model.." << endl;
   L = BoltzmannLearning_Ising (Nset, list_I_Model, N);
   cout << "Max Log-Likelihood, L = " << L << endl;
-  cout << "BIC: " << L - K * log( ((double) N) /2.) / 2. <<  endl << endl;
+  cout << "BIC: " << L - K * log( ((double) N) /(2.*M_PI)) / 2. <<  endl << endl;
   PrintTerm_ListInteraction (list_I_Model);
 
   return 0;

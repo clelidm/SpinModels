@@ -58,7 +58,7 @@ void empirical_averages_ACE(map<uint32_t, unsigned int> Nset, list<Interaction> 
 
 /**************************     MODEL AVERAGES    *****************************/
 /******************************************************************************/
-void Model_averages_ACE(double *P, double Z, list<Interaction> &list_I, unsigned int N) 
+void Model_averages_ACE(double *P, double Z, list<Interaction> &list_I) 
 {
   int Op_s = 1; // value of the operator for the state s ; \in {-1; 1}
 
@@ -138,7 +138,7 @@ public:
       {    (*I).g_ACE = x[i];   i++;  }
 
     double Z = 0; double *P = Probability_AllStates_ACE(li_I, &Z);
-    Model_averages_ACE(P, Z, li_I, N);
+    Model_averages_ACE(P, Z, li_I);
 
     double LogLi = LogL_ACE(li_I, Z, N);
 
@@ -184,7 +184,7 @@ double BoltzmannLearning_ACE(map<uint32_t, unsigned int> Nset, list<Interaction>
 
   //updating the model averages:
   double Z = 0; double *P = Probability_AllStates_ACE(list_I, &Z);
-  Model_averages_ACE(P, Z, list_I, N);
+  Model_averages_ACE(P, Z, list_I);
   free(P);
 
   cout << "Number of iterations: " << niter << " iterations" << std::endl;

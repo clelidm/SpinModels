@@ -5,7 +5,7 @@ This simple program generates binary data from a spin model with any chosen set 
 The program can use: 
  - pre-defined spin models (i.e., the independent model, and the fully connected pairwise model);
  - randomly generated spin models (see description below);
- - or, chosen spin models specified by the user through an input file (section to be added).
+ - or, chosen spin models specified by the user through an input file.
 
 The program then exactly calculates the cumulative (multi-dimensional) distribution for the chosen spin model, and randomly samples a dataset from it.
 The system is assumed stationary, and all datapoints are independently randomly sampled from that same distribution.

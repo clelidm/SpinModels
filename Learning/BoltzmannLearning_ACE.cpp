@@ -19,8 +19,8 @@ using namespace LBFGSpp;
 /******************************************************************************/
 
 /****************************   !! Convention !!   ****************************/
-/****     For Ising:      {1 in data <--> -1 in model}                     ****/
-/****                     {0 in data <--> +1 in model}                     ****/
+/****     For ACE:       {1 in data <--> 1 in model}                       ****/
+/****                    {0 in data <--> 0 in model}                       ****/
 /******************************************************************************/
 // s_i in {0;1}    !! Convention !! {0,1} in data <-> {0,1} in model; But mapping {0,1} <-> {-1,1} in Ising
 int Op_ACE(uint32_t Op, uint32_t state)         // Convention {0;1} 
@@ -80,11 +80,10 @@ void Model_averages_ACE(double *P, double Z, list<Interaction> &list_I)
 /******************************************************************************/
 // return the probability (not normalised) of all the states and compute the partition function
 
-double* Probability_AllStates_ACE(list<Interaction> list_I, double *Z)  // Convention {-1;1} 
-//!! Convention !!:  {1 in data <--> -1 in model}  and  {0 in data <--> 1 in model} 
+double* Probability_AllStates_ACE(list<Interaction> list_I, double *Z)  // Convention {0;1} 
 {
   double H = 0; // -energy of the state
-  int Op_s = 1; // value of the operator for the state s ; \in {-1; 1}
+  int Op_s = 1; // value of the operator for the state s ; \in {0; 1}
 
   list<Interaction>::iterator I;
   double* all_P = (double*)malloc((NOp_tot+1)*sizeof(double));

@@ -49,7 +49,7 @@ void empirical_averages_Ising(map<uint32_t, unsigned int> Nset, list<Interaction
 /******************************************************************************/
 /**************************     MODEL AVERAGES    *****************************/
 /******************************************************************************/
-void Model_averages_Ising(double *P, double Z, list<Interaction> &list_I, unsigned int N) 
+void Model_averages_Ising(double *P, double Z, list<Interaction> &list_I) 
 {
   int Op_s = 1; // value of the operator for the state s ; \in {-1; 1}
 
@@ -130,7 +130,7 @@ public:
       {    (*I).g_Ising = x[i];   i++;  }
 
     double Z = 0; double *P = Probability_AllStates_Ising(li_I, &Z);
-    Model_averages_Ising(P, Z, li_I, N);
+    Model_averages_Ising(P, Z, li_I);
 
     double LogLi = LogL_Ising(li_I, Z, N);
 
@@ -187,7 +187,7 @@ double BoltzmannLearning_Ising(map<uint32_t, unsigned int> Nset, list<Interactio
 
   //updating the model averages:
   double Z = 0; double *P = Probability_AllStates_Ising(list_I, &Z);
-  Model_averages_Ising(P, Z, list_I, N);
+  Model_averages_Ising(P, Z, list_I);
   free(P);
 
   cout << "Number of iterations: " << niter << " iterations" << std::endl;
